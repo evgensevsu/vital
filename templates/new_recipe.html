@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить новый рецепт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(45deg, #333, #555, #777, #999);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .form-group label {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 15px;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid #007bff;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #0056b3;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-radius: 50px;
+            padding: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .text-center a {
+            font-size: 1.2rem;
+            color: #ffcc5c;
+            text-decoration: none;
+        }
+
+        .text-center a:hover {
+            color: #f39c12;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Добавить новый рецепт</h1>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="name">Название рецепта</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Ингредиенты</label>
+                <textarea class="form-control" id="ingredients" name="ingredients" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="instructions">Инструкции</label>
+                <textarea class="form-control" id="instructions" name="instructions" rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="calories">Калории</label>
+                <input type="number" class="form-control" id="calories" name="calories" required>
+            </div>
+            <div class="form-group">
+                <label for="protein">Белки (г)</label>
+                <input type="number" class="form-control" id="protein" name="protein" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="fat">Жиры (г)</label>
+                <input type="number" class="form-control" id="fat" name="fat" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="carbohydrates">Углеводы (г)</label>
+                <input type="number" class="form-control" id="carbohydrates" name="carbohydrates" step="0.1" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Сохранить рецепт</button>
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-back">На главную</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

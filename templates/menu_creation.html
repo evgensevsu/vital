@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание меню</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(45deg, #333, #555, #777, #999);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            flex: 1 1 30%;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        .icon-size {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .row.custom-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .col-md-4 {
+            flex: 1 1 30%;
+            margin: 10px;
+        }
+
+        .select-custom {
+            background-color: #222;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            border: 1px solid #444;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .select-custom:hover, .select-custom:focus {
+            border-color: #007bff;
+            background-color: #333;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+        }
+
+        .select-custom option {
+            background-color: #222;
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Для мобильных устройств */
+        @media (max-width: 768px) {
+            .col-md-4 {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Создание меню на неделю</h1>
+
+        <p class="text-center mt-4">Выберите блюда для каждого дня недели: завтрак, обед и ужин.</p>
+
+        <form method="POST">
+            <div class="row custom-row">
+                <!-- Понедельник -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Понедельник</h5>
+                        <div class="form-group">
+                            <label for="monday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="monday-breakfast" name="monday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="monday-lunch">Обед</label>
+                            <select class="select-custom" id="monday-lunch" name="monday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="monday-dinner">Ужин</label>
+                            <select class="select-custom" id="monday-dinner" name="monday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вторник -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Вторник</h5>
+                        <div class="form-group">
+                            <label for="tuesday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="tuesday-breakfast" name="tuesday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tuesday-lunch">Обед</label>
+                            <select class="select-custom" id="tuesday-lunch" name="tuesday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tuesday-dinner">Ужин</label>
+                            <select class="select-custom" id="tuesday-dinner" name="tuesday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Среда -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Среда</h5>
+                        <div class="form-group">
+                            <label for="wednesday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="wednesday-breakfast" name="wednesday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wednesday-lunch">Обед</label>
+                            <select class="select-custom" id="wednesday-lunch" name="wednesday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wednesday-dinner">Ужин</label>
+                            <select class="select-custom" id="wednesday-dinner" name="wednesday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row custom-row">
+                <!-- Четверг -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Четверг</h5>
+                        <div class="form-group">
+                            <label for="thursday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="thursday-breakfast" name="thursday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="thursday-lunch">Обед</label>
+                            <select class="select-custom" id="thursday-lunch" name="thursday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="thursday-dinner">Ужин</label>
+                            <select class="select-custom" id="thursday-dinner" name="thursday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Пятница -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Пятница</h5>
+                        <div class="form-group">
+                            <label for="friday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="friday-breakfast" name="friday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="friday-lunch">Обед</label>
+                            <select class="select-custom" id="friday-lunch" name="friday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="friday-dinner">Ужин</label>
+                            <select class="select-custom" id="friday-dinner" name="friday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Суббота -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Суббота</h5>
+                        <div class="form-group">
+                            <label for="saturday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="saturday-breakfast" name="saturday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="saturday-lunch">Обед</label>
+                            <select class="select-custom" id="saturday-lunch" name="saturday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="saturday-dinner">Ужин</label>
+                            <select class="select-custom" id="saturday-dinner" name="saturday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Воскресенье -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-title text-center">Воскресенье</h5>
+                        <div class="form-group">
+                            <label for="sunday-breakfast">Завтрак</label>
+                            <select class="select-custom" id="sunday-breakfast" name="sunday_breakfast">
+                                <option value="">Выберите завтрак</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sunday-lunch">Обед</label>
+                            <select class="select-custom" id="sunday-lunch" name="sunday_lunch">
+                                <option value="">Выберите обед</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sunday-dinner">Ужин</label>
+                            <select class="select-custom" id="sunday-dinner" name="sunday_dinner">
+                                <option value="">Выберите ужин</option>
+                                {% for recipe in recipes %}
+                                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <!-- Кнопка для отправки -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-custom">Сохранить меню</button>
+                        </div>
+                    </div>
+                </form>
+    </div>
+            <div class="text-center mt-4">
+                <a href="{{ url_for('index') }}" class="btn btn-back">На главную</a>
+            </div>
+    <!-- Подключение Bootstrap JS (для дополнительных возможностей) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
